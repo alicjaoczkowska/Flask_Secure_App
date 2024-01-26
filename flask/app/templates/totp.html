@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="column is-4 is-offset-4">
+    <h3 class="title">Input code</h3>
+    <div class="box">
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="notification is-danger">
+                {{ messages[0] }}
+            </div>
+        {% endif %}
+        {% endwith %}
+        <img src="data:image/png;base64, {{ qr_image }}" style="width:200px;height:200px"/>
+        <p>Scan QR code with authenticator</p>
+        <form method="POST" action="/totp">
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="code" name="code" placeholder="Code" autofocus="">
+                </div>
+            </div>
+            <button class="button is-block is-info is-large is-fullwidth">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

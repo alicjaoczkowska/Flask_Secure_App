@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content%}
+<div class="column is-6 is-offset-3">
+    <h3 class="title">Public notes</h3>
+    <div class="box" style="text-align: left; height: 300px;">
+        <ul class="list-group list-group-flush" id="notes"></ul>
+            <div class="content">
+                {% for note in notes %}
+                    <li class="list-group-item">
+                        <a href="{{ url_for('main.note', note_id=note.id) }}" >{{ note.title }}</a>
+                    </li>
+                {% endfor %}
+            </div>
+        </ul>
+    </div>
+</div>
+{% endblock %}
